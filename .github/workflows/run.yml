@@ -18,10 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.25'
 
       - name: Install tools
         run: |
@@ -31,15 +33,20 @@ jobs:
       ### Generate geosite.dat ###
 
       - name: Checkout community domain list
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: v2fly/domain-list-community
           path: domains
           fetch-depth: 1
 
+      - name: Install idn2
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y idn2
+
       - name: Get antifilter domain lists
         run: |
-          curl -sSL https://antifilter.download/list/domains.lst > domains/data/antifilter
+          curl -sSL https://antifilter.download/list/domains.lst | grep -v -- -- | idn2 | grep -E '^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$' > domains/data/antifilter
           curl -sSL https://community.antifilter.download/list/domains.lst > domains/data/antifilter-community
 
       - name: Generate geosite.dat file

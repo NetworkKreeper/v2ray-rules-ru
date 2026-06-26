@@ -8,10 +8,10 @@ It adds the following tags to both data files:
 
 # Download
 
-You can download the latest version of the files from the [releases page](https://github.com/NetworkKeeper/v2ray-rules-dat-ru/releases).
+You can download the latest version of the files from the [releases page](https://github.com/NetworkKreeper/v2ray-rules-dat-ru/releases).
 
-- **geoip.dat:**  https://github.com/NetworkKeeper/v2ray-rules-dat-ru/releases/latest/download/geoip.dat
-- **geosite.dat:**  https://github.com/NetworkKeeper/v2ray-rules-dat-ru/releases/latest/download/geosite.dat
+- **geoip.dat:**  https://github.com/NetworkKreeper/v2ray-rules-dat-ru/releases/latest/download/geoip.dat
+- **geosite.dat:**  https://github.com/NetworkKreeper/v2ray-rules-dat-ru/releases/latest/download/geosite.dat
 
 # Usage
 
