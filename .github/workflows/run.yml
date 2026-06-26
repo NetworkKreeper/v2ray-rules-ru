@@ -46,7 +46,7 @@ jobs:
 
       - name: Get antifilter domain lists
         run: |
-          curl -sSL https://antifilter.download/list/domains.lst | grep -v -- -- | grep -vE "_|\"" | idn2 > domains/data/antifilter
+          curl -sSL https://antifilter.download/list/domains.lst | grep -v -- -- | idn2 | grep -E '^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$' > domains/data/antifilter
           curl -sSL https://community.antifilter.download/list/domains.lst > domains/data/antifilter-community
 
       - name: Generate geosite.dat file
