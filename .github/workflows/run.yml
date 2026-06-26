@@ -46,8 +46,8 @@ jobs:
 
       - name: Get antifilter domain lists
         run: |
-          curl -sSL https://antifilter.download/list/domains.lst | idn2 > domains/data/antifilter
-          curl -sSL https://community.antifilter.download/list/domains.lst | idn2 > domains/data/antifilter-community
+          curl -sSL https://antifilter.download/list/domains.lst | while IFS= read -r d; do idn2 "$d" 2>/dev/null || echo "$d"; done > domains/data/antifilter
+          curl -sSL https://community.antifilter.download/list/domains.lst | while IFS= read -r d; do idn2 "$d" 2>/dev/null || echo "$d"; done > domains/data/antifilter-community
 
       - name: Generate geosite.dat file
         run: domain-list-community -datapath domains/data -outputdir publish -outputname geosite.dat
