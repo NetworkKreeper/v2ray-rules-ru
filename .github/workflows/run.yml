@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
 
       - name: Install tools
         run: |
@@ -31,7 +31,7 @@ jobs:
       ### Generate geosite.dat ###
 
       - name: Checkout community domain list
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: v2fly/domain-list-community
           path: domains
